@@ -35,8 +35,8 @@ export default function TrustedBy() {
   ];
 
   return (
-    <section className="relative z-10 py-10 border-y border-violet-500/20 bg-[#F4F0FC] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative z-10 py-9 border-y border-violet-200/60 bg-[#F5F2FC] overflow-hidden">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center gap-6 lg:flex-row lg:justify-between lg:gap-8">
 
           {/* Label */}
@@ -46,38 +46,38 @@ export default function TrustedBy() {
             </h2>
           </div>
 
-          {/* Logos Ribbon Container: Scrolling marquee on mobile, static flex row on desktop */}
-          <div className="marquee-container w-full lg:w-auto">
+          {/* Logos Ribbon Container: Scrolling marquee on all screens */}
+          <div className="marquee-container w-full lg:flex-1">
             <div className="marquee-content flex items-center">
 
               {/* First Set of Logos */}
               {brands.map((brand) => (
                 <div
                   key={`${brand.name}-first`}
-                  className="flex-shrink-0 flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300 relative h-9 w-28"
+                  className="flex-shrink-0 mx-6 lg:mx-0 relative h-9 w-28 opacity-90 hover:opacity-100 transition-opacity duration-300"
                 >
                   <Image
                     src={brand.src}
                     alt={`${brand.name} logo`}
                     fill
-                    className="object-contain"
+                    className="object-contain mix-blend-multiply"
                     sizes="112px"
                     loading="lazy"
                   />
                 </div>
               ))}
 
-              {/* Second Set of Logos (For seamless looping marquee animation on mobile/tablet) */}
+              {/* Second Set of Logos (For seamless looping marquee animation on mobile/tablet alone) */}
               {brands.map((brand) => (
                 <div
                   key={`${brand.name}-second`}
-                  className="flex-shrink-0 lg:hidden flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300 relative h-9 w-28"
+                  className="flex-shrink-0 lg:hidden mx-6 relative h-9 w-28 opacity-90 hover:opacity-100 transition-opacity duration-300"
                 >
                   <Image
                     src={brand.src}
                     alt={`${brand.name} logo`}
                     fill
-                    className="object-contain"
+                    className="object-contain mix-blend-multiply"
                     sizes="112px"
                     loading="lazy"
                   />

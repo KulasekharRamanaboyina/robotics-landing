@@ -174,7 +174,7 @@ body {
 .marquee-content {
   display: flex;
   gap: 3rem; /* 48px spacing between items */
-  animation: marquee-scroll 20s linear infinite;
+  animation: marquee-scroll 25s linear infinite;
   width: max-content;
   flex-shrink: 0;
 }
@@ -188,18 +188,23 @@ body {
   }
 }
 
-/* Disable marquee animation on desktop screens */
+
+
+/* Disable marquee animation and display logos side-by-side on desktop screens */
 @media (min-width: 1024px) {
   .marquee-container {
-    mask-image: none;
-    -webkit-mask-image: none;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
     overflow: visible;
-    width: auto;
+    width: 100% !important;
+    flex: 1 1 0% !important;
   }
   .marquee-content {
     animation: none !important;
     transform: none !important;
-    gap: 2.5rem; /* lg:gap-10 equivalent */
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
   }
 }
 
