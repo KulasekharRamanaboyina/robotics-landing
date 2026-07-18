@@ -111,7 +111,7 @@ export default function FeaturedCaseStudy() {
                 href="#contact"
                 className="inline-flex h-9 items-center justify-center gap-2 rounded-xl border border-white/10 hover:border-violet-500 bg-white/5 hover:bg-violet-950/20 px-4 text-xs font-bold text-white transition-all hover:scale-102 hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] group/btn"
               >
-                View Full Case Study
+                Book a Strategy Call
                 <ArrowRight className="h-3.5 w-3.5 group-hover/btn:translate-x-1 transition-transform" />
               </a>
             </div>

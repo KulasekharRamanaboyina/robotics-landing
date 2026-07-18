@@ -22,7 +22,7 @@ export default function TrustedBy() {
     },
     {
       name: "ANSCER Robotics",
-      src: "/logos/anscer-logo.jpg",
+      src: "/logos/anscer-logo.png",
       width: 100,
       height: 35,
     },
@@ -38,7 +38,7 @@ export default function TrustedBy() {
     <section className="relative z-10 py-10 border-y border-white/5 bg-[#07050E]/40 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center gap-6 lg:flex-row lg:justify-between lg:gap-8">
-          
+
           {/* Label */}
           <div className="text-center lg:text-left flex-shrink-0">
             <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500">
@@ -49,7 +49,7 @@ export default function TrustedBy() {
           {/* Logos Ribbon Container: Scrolling marquee on mobile, static flex row on desktop */}
           <div className="marquee-container w-full lg:w-auto">
             <div className="marquee-content flex items-center">
-              
+
               {/* First Set of Logos */}
               {brands.map((brand) => (
                 <div
