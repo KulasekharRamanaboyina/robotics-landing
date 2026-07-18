@@ -35,13 +35,13 @@ export default function TrustedBy() {
   ];
 
   return (
-    <section className="relative z-10 py-10 border-y border-white/5 bg-[#07050E]/40 overflow-hidden">
+    <section className="relative z-10 py-10 border-y border-violet-500/20 bg-[#F4F0FC] overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center gap-6 lg:flex-row lg:justify-between lg:gap-8">
 
           {/* Label */}
           <div className="text-center lg:text-left flex-shrink-0">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-violet-900">
               Trusted by Robotics & Industrial Tech Brands
             </h2>
           </div>
