@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+:root {
+  --background: #05030A;
+  --foreground: #F8F7FA;
+  --primary: #800080;
+  --primary-hover: #660066;
+  --card-bg: rgba(11, 8, 19, 0.55);
+  --card-border: rgba(255, 255, 255, 0.05);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+
+  /* Overrides for violet theme colors to map to #800080 (pure purple) */
+  --color-violet-50: #faf0fa;
+  --color-violet-100: #f3d9f3;
+  --color-violet-200: #e7b3e7;
+  --color-violet-300: #d38cd3;
+  --color-violet-400: #bf66bf;
+  --color-violet-500: #a640a6;
+  --color-violet-600: #800080;
+  --color-violet-700: #660066;
+  --color-violet-800: #4d004d;
+  --color-violet-900: #330033;
+  --color-violet-950: #1c001c;
+
+  /* Overrides for purple theme colors to map to #800080 */
+  --color-purple-50: #faf0fa;
+  --color-purple-100: #f3d9f3;
+  --color-purple-200: #e7b3e7;
+  --color-purple-300: #d38cd3;
+  --color-purple-400: #bf66bf;
+  --color-purple-500: #a640a6;
+  --color-purple-600: #800080;
+  --color-purple-700: #660066;
+  --color-purple-800: #4d004d;
+  --color-purple-900: #330033;
+  --color-purple-950: #1c001c;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05030A;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A1625;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: rgba(11, 8, 19, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hover effects for glass cards */
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  background: rgba(15, 11, 26, 0.75);
+  border-color: rgba(128, 0, 128, 0.25);
+  box-shadow: 0 10px 40px -10px rgba(128, 0, 128, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Ambient glow spot styles */
+.glow-spot {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1) translate(0px, 0px); }
+  50% { opacity: 0.5; transform: scale(1.15) translate(10px, -15px); }
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #F8F7FA 35%, #d38cd3 70%, #800080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 4s ease-in-out infinite;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glowing-path {
+  background: linear-gradient(90deg, rgba(128,0,128,0.1) 0%, rgba(128,0,128,0.75) 50%, rgba(128,0,128,0.1) 100%);
+  background-size: 200% 100%;
+  animation: travel-light 4s linear infinite;
+}
+@keyframes travel-light {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.bg-grid-pattern {
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, rgba(128, 0, 128, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(128, 0, 128, 0.04) 1px, transparent 1px);
+}
+
+.radar-scan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(128, 0, 128, 0.35), transparent);
+  animation: scan-vertical 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes scan-vertical {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* Infinite scroll marquee for logos ribbon on mobile */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+}
+
+.marquee-content {
+  display: flex;
+  gap: 3rem; /* 48px spacing between items */
+  animation: marquee-scroll 20s linear infinite;
+  width: max-content;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Disable marquee animation on desktop screens */
+@media (min-width: 1024px) {
+  .marquee-container {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow: visible;
+    width: auto;
+  }
+  .marquee-content {
+    animation: none !important;
+    transform: none !important;
+    gap: 2.5rem; /* lg:gap-10 equivalent */
+  }
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page load keyframes and animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
