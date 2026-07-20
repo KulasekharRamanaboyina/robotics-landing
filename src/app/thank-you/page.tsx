@@ -123,7 +123,7 @@ function ThankYouContent() {
 
 export default function ThankYouPage() {
   return (
-    <div className="relative min-h-screen bg-[#05030A] text-[#F8F7FA] overflow-x-hidden selection:bg-violet-600 selection:text-white flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[#05030A] text-[#F8F7FA] overflow-x-clip selection:bg-violet-600 selection:text-white flex flex-col justify-between">
       {/* Background glow spots */}
       <div className="glow-spot absolute left-[-10%] top-[-5%] h-[600px] w-[600px] bg-violet-900/10 animate-pulse-slow pointer-events-none" />
       <div className="glow-spot absolute right-[-5%] top-[10%] h-[500px] w-[500px] bg-purple-900/10 pointer-events-none" />

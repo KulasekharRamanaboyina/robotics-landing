@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Calendar, ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
+import { submitContactForm } from "@/app/actions";
 
 export default function FinalCTA() {
   const router = useRouter();
@@ -16,10 +17,19 @@ export default function FinalCTA() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.email) {
       setFormSubmitted(true);
+      
+      // Submit form data to Google Sheets in the background
+      await submitContactForm({
+        name: formData.name,
+        email: formData.email,
+        challenge: formData.challenge,
+        message: formData.message,
+      });
+
       const params = new URLSearchParams({
         name: formData.name,
         email: formData.email,

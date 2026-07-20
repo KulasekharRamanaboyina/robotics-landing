@@ -15,9 +15,10 @@ export default function Footer() {
             <Image
               src="/all4ps-logo.png"
               alt="all4Ps logo"
-              width={100}
+              width={32}
               height={32}
               className="h-8 w-auto object-contain"
+              style={{ width: "auto" }}
             />
           </a>
           

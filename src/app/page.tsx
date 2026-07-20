@@ -14,7 +14,7 @@ import ScrollObserver from "@/components/ScrollObserver";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#05030A] text-[#F8F7FA] overflow-x-hidden selection:bg-violet-600 selection:text-white">
+    <div className="relative min-h-screen bg-[#05030A] text-[#F8F7FA] overflow-x-clip selection:bg-violet-600 selection:text-white">
       {/* Background glow spots at the top layout level */}
       <div className="glow-spot absolute left-[-10%] top-[-5%] h-[600px] w-[600px] bg-violet-900/10 animate-pulse-slow pointer-events-none" />
       <div className="glow-spot absolute right-[-5%] top-[10%] h-[500px] w-[500px] bg-purple-900/10 pointer-events-none" />
