@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Calendar, ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 
 export default function FinalCTA() {
+  const router = useRouter();
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -11,12 +13,20 @@ export default function FinalCTA() {
     email: "",
     company: "",
     challenge: "Pipeline Predictability",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.email) {
       setFormSubmitted(true);
+      const params = new URLSearchParams({
+        name: formData.name,
+        email: formData.email,
+        challenge: formData.challenge,
+        message: formData.message,
+      });
+      router.push(`/thank-you?${params.toString()}`);
     }
   };
 
@@ -168,6 +178,20 @@ export default function FinalCTA() {
                           </div>
                         )}
                       </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-[10px] font-bold text-gray-300 uppercase tracking-wider mb-1.5 font-mono">
+                        Brief Project Details or Message
+                      </label>
+                      <textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="TELL US A BIT ABOUT YOUR SYSTEM OR GOALS..."
+                        rows={3}
+                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-violet-500 focus:bg-white/10 focus:outline-none focus:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all resize-none font-sans"
+                      />
                     </div>
 
                     <button
