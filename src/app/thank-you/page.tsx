@@ -1,18 +1,37 @@
 "use client";
 
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, ArrowLeft, HelpCircle } from "lucide-react";
 
 function ThankYouContent() {
-  const searchParams = useSearchParams();
-  const name = searchParams.get("name") || "there";
-  const email = searchParams.get("email") || "your email";
-  const challenge = searchParams.get("challenge") || "Pipeline Predictability";
-  const message = searchParams.get("message") || "";
+  const [submission, setSubmission] = useState<{
+    name: string;
+    email: string;
+    phone?: string;
+    challenge: string;
+    message: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("contactFormSubmission");
+      if (stored) {
+        try {
+          setSubmission(JSON.parse(stored));
+        } catch (e) {
+          console.error("Failed to parse form submission storage:", e);
+        }
+      }
+    }
+  }, []);
+
+  const name = submission?.name || "there";
+  const email = submission?.email || "your email";
+  const challenge = submission?.challenge || "Pipeline Predictability";
+  const message = submission?.message || "";
 
   return (
     <div className="relative min-h-[60vh] flex items-center justify-center px-4 py-16 sm:py-24">
@@ -68,6 +87,18 @@ function ThankYouContent() {
                 </p>
               </div>
             </div>
+
+            {submission?.phone && (
+              <div className="pt-4 border-t border-white/5 flex gap-3.5">
+                <div className="h-9 w-9 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 flex-shrink-0">
+                  <span className="font-mono text-xs font-bold">TEL</span>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">Phone Number</p>
+                  <p className="text-sm font-semibold text-white mt-0.5">{submission.phone}</p>
+                </div>
+              </div>
+            )}
 
             {message && (
               <div className="pt-4 border-t border-white/5 flex gap-3.5">

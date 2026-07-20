@@ -10,6 +10,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "all4Ps | B2B Robotics & Deep Tech Growth Agency",
   description: "Build market leadership that drives enterprise pipeline. Help enterprise buyers discover, trust, and choose your robotics brand with strategic positioning, GTM, ABM, and thought leadership.",
+  icons: {
+    icon: "/all4Ps-logo.webp",
+  },
   keywords: [
     "robotics marketing",
     "deep tech GTM",

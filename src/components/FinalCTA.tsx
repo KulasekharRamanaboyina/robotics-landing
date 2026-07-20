@@ -12,6 +12,7 @@ export default function FinalCTA() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     challenge: "Pipeline Predictability",
     message: "",
@@ -26,17 +27,22 @@ export default function FinalCTA() {
       await submitContactForm({
         name: formData.name,
         email: formData.email,
+        phone: formData.phone,
         challenge: formData.challenge,
         message: formData.message,
       });
 
-      const params = new URLSearchParams({
-        name: formData.name,
-        email: formData.email,
-        challenge: formData.challenge,
-        message: formData.message,
-      });
-      router.push(`/thank-you?${params.toString()}`);
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("contactFormSubmission", JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          challenge: formData.challenge,
+          message: formData.message,
+        }));
+      }
+
+      router.push("/thank-you");
     }
   };
 
@@ -145,6 +151,20 @@ export default function FinalCTA() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="ENTER WORK EMAIL..."
+                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-violet-500 focus:bg-white/10 focus:outline-none focus:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="block text-[10px] font-bold text-gray-300 uppercase tracking-wider mb-1.5 font-mono">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="ENTER PHONE NUMBER..."
                         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:border-violet-500 focus:bg-white/10 focus:outline-none focus:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all"
                       />
                     </div>

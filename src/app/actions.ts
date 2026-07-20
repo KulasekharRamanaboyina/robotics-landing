@@ -3,6 +3,7 @@
 export async function submitContactForm(formData: {
   name: string;
   email: string;
+  phone?: string;
   challenge: string;
   message: string;
 }) {
