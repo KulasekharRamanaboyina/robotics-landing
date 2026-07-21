@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="glow-spot absolute -top-20 left-1/2 h-[150px] w-[350px] -translate-x-1/2 bg-violet-950/20 pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center gap-6">
-        
+
         {/* Logo & Social Links */}
         <div className="flex flex-col items-center gap-4">
           <a href="#" className="flex items-center">
@@ -21,7 +21,7 @@ export default function Footer() {
               style={{ width: "auto" }}
             />
           </a>
-          
+
           {/* Social Icons */}
           <div className="flex items-center space-x-3.5 mt-1">
             <a
@@ -56,7 +56,7 @@ export default function Footer() {
               <Globe className="h-4.5 w-4.5" />
             </a>
             <a
-              href="mailto:grow@all4ps.co"
+              href="mailto:pavani@all4ps.co"
               className="rounded-full bg-white/5 p-1.5 text-gray-400 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center"
               aria-label="Mail"
             >
