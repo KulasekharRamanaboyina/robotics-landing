@@ -56,7 +56,7 @@ export default function RootLayout({
           />
         </noscript>
         {children}
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager added*/}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
