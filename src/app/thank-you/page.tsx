@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, ArrowLeft, HelpCircle } from "lucide-react";
+import Script from "next/script";
 
 function ThankYouContent() {
   const [submission, setSubmission] = useState<{
@@ -35,16 +36,20 @@ function ThankYouContent() {
 
   return (
     <div className="relative min-h-[60vh] flex items-center justify-center px-4 py-16 sm:py-24">
+      <Script id="facebook-lead-event" strategy="afterInteractive">
+        {`
+    fbq('track', 'Lead');
+  `}
+      </Script>
       {/* Background glow spot */}
       <div className="glow-spot absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-[400px] w-[600px] bg-violet-600/10 pointer-events-none rounded-full blur-3xl" />
 
       <div className="relative z-10 w-full max-w-2xl mx-auto text-center">
         {/* Main success card with HUD styling */}
         <div className="group/card relative rounded-2xl bg-white/[0.01] hover:bg-gradient-to-br hover:from-purple-950/15 hover:to-[#0F0A1C] border border-white/5 hover:border-violet-500/40 p-8 md:p-12 transition-all duration-300 shadow-2xl overflow-hidden">
-          
           {/* Engineering grid backdrop */}
           <div className="absolute inset-0 bg-grid-pattern opacity-30 group-hover/card:opacity-50 transition-opacity duration-500 pointer-events-none" />
-          
+
           {/* Glowing Backlight blur effect */}
           <div className="absolute inset-0 bg-violet-600/5 rounded-2xl filter blur-xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 -z-10 pointer-events-none" />
 
@@ -70,7 +75,9 @@ function ThankYouContent() {
           </h1>
 
           <p className="mt-4 text-gray-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-            Your request for a B2B robotics growth consultation has been received. We have sent a confirmation email to <span className="font-semibold text-white">{email}</span>.
+            Your request for a B2B robotics growth consultation has been
+            received. We have sent a confirmation email to{" "}
+            <span className="font-semibold text-white">{email}</span>.
           </p>
 
           {/* Dynamic details section */}
@@ -80,10 +87,15 @@ function ThankYouContent() {
                 <HelpCircle className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">Target Focus Area</p>
-                <p className="text-sm font-semibold text-white mt-0.5">{challenge}</p>
+                <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">
+                  Target Focus Area
+                </p>
+                <p className="text-sm font-semibold text-white mt-0.5">
+                  {challenge}
+                </p>
                 <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
-                  Our B2B marketing strategists will audit your brand presence and prepare specific positioning solutions for this challenge.
+                  Our B2B marketing strategists will audit your brand presence
+                  and prepare specific positioning solutions for this challenge.
                 </p>
               </div>
             </div>
@@ -94,8 +106,12 @@ function ThankYouContent() {
                   <span className="font-mono text-xs font-bold">TEL</span>
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">Phone Number</p>
-                  <p className="text-sm font-semibold text-white mt-0.5">{submission.phone}</p>
+                  <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">
+                    Phone Number
+                  </p>
+                  <p className="text-sm font-semibold text-white mt-0.5">
+                    {submission.phone}
+                  </p>
                 </div>
               </div>
             )}
@@ -106,7 +122,9 @@ function ThankYouContent() {
                   <span className="font-mono text-xs font-bold">MSG</span>
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">Your Message</p>
+                  <p className="text-[10px] font-bold font-mono uppercase tracking-wider text-violet-400">
+                    Your Message
+                  </p>
                   <p className="text-xs text-gray-300 mt-1 leading-relaxed italic bg-white/[0.02] p-3 rounded-lg border border-white/5 max-h-24 overflow-y-auto whitespace-pre-wrap">
                     "{message}"
                   </p>
@@ -122,16 +140,30 @@ function ThankYouContent() {
             </h4>
             <ul className="space-y-2.5 text-left pl-2">
               <li className="flex items-start gap-2">
-                <span className="text-violet-400 font-bold font-mono">01 //</span>
-                <span>We will analyze your current GTM and search/social presence.</span>
+                <span className="text-violet-400 font-bold font-mono">
+                  01 //
+                </span>
+                <span>
+                  We will analyze your current GTM and search/social presence.
+                </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-violet-400 font-bold font-mono">02 //</span>
-                <span>You will receive an email invitation to choose a 30-min strategy window.</span>
+                <span className="text-violet-400 font-bold font-mono">
+                  02 //
+                </span>
+                <span>
+                  You will receive an email invitation to choose a 30-min
+                  strategy window.
+                </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-violet-400 font-bold font-mono">03 //</span>
-                <span>We connect, review findings, and deliver your action blueprint.</span>
+                <span className="text-violet-400 font-bold font-mono">
+                  03 //
+                </span>
+                <span>
+                  We connect, review findings, and deliver your action
+                  blueprint.
+                </span>
               </li>
             </ul>
           </div>
@@ -162,12 +194,14 @@ export default function ThankYouPage() {
       <Navbar />
 
       <main className="flex-grow">
-        <Suspense fallback={
-          <div className="min-h-[60vh] flex items-center justify-center text-gray-400 font-mono text-xs">
-            <span className="h-2 w-2 rounded-full bg-violet-500 animate-ping mr-2.5" />
-            INITIALIZING SECURE SESSION...
-          </div>
-        }>
+        <Suspense
+          fallback={
+            <div className="min-h-[60vh] flex items-center justify-center text-gray-400 font-mono text-xs">
+              <span className="h-2 w-2 rounded-full bg-violet-500 animate-ping mr-2.5" />
+              INITIALIZING SECURE SESSION...
+            </div>
+          }
+        >
           <ThankYouContent />
         </Suspense>
       </main>
