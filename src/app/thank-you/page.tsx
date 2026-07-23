@@ -6,7 +6,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CheckCircle2, ArrowLeft, HelpCircle } from "lucide-react";
 import Script from "next/script";
-
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
 function ThankYouContent() {
   const [submission, setSubmission] = useState<{
     name: string;
@@ -26,9 +30,13 @@ function ThankYouContent() {
           console.error("Failed to parse form submission storage:", e);
         }
       }
+      // Send GTM event after successful form submission
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "generate_lead",
+      });
     }
   }, []);
-
   const name = submission?.name || "there";
   const email = submission?.email || "your email";
   const challenge = submission?.challenge || "Pipeline Predictability";
