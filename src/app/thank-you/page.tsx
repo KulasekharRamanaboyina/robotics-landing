@@ -33,7 +33,7 @@ function ThankYouContent() {
       // Send GTM event after successful form submission
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "generate_lead",
+        event: "robotics_generate_lead",
       });
     }
   }, []);
